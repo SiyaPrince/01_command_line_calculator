@@ -9,9 +9,9 @@ print()
 
 # Initialize loop control variable
 
-continue_choice = "Yes"
+continue_choice = "Continue"
 
-while continue_choice.lower() == "yes":
+while continue_choice.lower() == "continue":
 
     # Display menu of operations
 
@@ -28,19 +28,24 @@ while continue_choice.lower() == "yes":
 
     print()
     
-    if operation_choice == "5":
-        print("Exiting the calculator. Goodbye!")
-        break
+    
 
     if operation_choice not in ["1", "2", "3", "4"]:
+        if operation_choice == "5":
+                print("Exiting the calculator. Goodbye!")
+                break
         print("Invalid choice of operation. Please try again.")
         print()
         continue
 
     # Take in inputs of the numbers
-
-    first_number = float(input("Enter the first number: "))
-    second_number = float(input("Enter the second number: "))
+    try:
+        first_number = float(input("Enter the first number: "))
+        second_number = float(input("Enter the second number: "))
+    except ValueError:
+        print("Error: Please enter valid numbers.")
+        print()
+        continue
 
     print()
 
@@ -66,6 +71,15 @@ while continue_choice.lower() == "yes":
 
     # Ask whether use wants to continue or not
 
-    continue_choice = input("Do you want to perform another calculation? (Yes/No): ")
+    print("1. Continue")
+    print("2. Exit")
+    print()
+
+    continue_choice = input("Do you want to perform another calculation? (Continue/Exit): ")
+
+    if continue_choice == "1":
+        continue_choice = "Continue"
+    elif continue_choice == "2":
+        continue_choice = "Exit"
 
     print()
